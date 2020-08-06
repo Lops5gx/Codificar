@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'CadastroController@index');
+Route::get('/orcamento', 'CadastroController@index');
+Route::resource('/orcamento','CadastroController');

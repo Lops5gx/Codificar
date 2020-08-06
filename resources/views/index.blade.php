@@ -1,10 +1,10 @@
 @extends('Template.template')
 
 @section('content')
-    <h1 class="text-center">Cadastro de Peças </h1>
+    <h1 class="text-center">Oficina 2.0 </h1>
 
     <div class="text-center">
-        <a hrf="{{url(orcamento/create)}}">
+        <a href="{{url('orcamento/create')}}">
           <button class="btn btn-success mt-4 mb-4">Cadastrar</button>
         </a>
     </div>
