@@ -17,6 +17,7 @@
         </a>
     </div>
 <div class="col-10 m-auto">
+    @csrf
     <table class="table table-bordered text-center">
         <thead>
           <tr>
@@ -36,7 +37,7 @@
                   $nomeFuncionarios = $orcamentos->find($orcamentos->id)->_relFuncionario;
                 @endphp
                 <tr>
-                  {{-- date_format($orcamentos->created_at,"d/m/y H:i:s") --}}
+                 
                   <th scope="row">{{$orcamentos->id}}</th>
                   <td>{{$nomeCliente->name}}</td>
                   <td>{{date_format($orcamentos->created_at,"d/m/y")}}</td>
@@ -50,14 +51,15 @@
                     </a>
                   </td>
                   <td>
-                    <a href=""> 
-                      <button class="btn btn-primary">Remover</button>
+                    <a href="{{url("orcamento/$orcamentos->id")}}" class="js_delete"> 
+                      <button class="btn btn-primary">Deletar</button>
                     </a>
                   </td>
                 </tr>
               @endforeach
         </tbody>
       </table>
-</div>
+      {{!! $orcamento->links() !!}}
+      </div>
     
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Requests\OrcamentoRequest;
 use App\Models\ModelCliente;
 use App\Models\ModelFuncionario;
 use App\Models\ModelOrcamento;
+use App\Orcamento;
 
 class CadastroController extends Controller
 {   
@@ -28,9 +29,11 @@ class CadastroController extends Controller
      */
     public function index()
     {
-        $cliente =$this->objCliente->all();
-        $funcionario=$this->objFuncionario->all();
-        $orcamento=$this->objOrcamento->ALL()->sortByDesc('created_at');
+        $cliente = $this->objCliente->all();
+        $funcionario= $this->objFuncionario->all();
+        $orcamento= $this->objOrcamento->all();
+        $orcamento = Orcamento::paginate(2)->sortByDesc('created_at');
+        
         return view('index', compact('cliente','funcionario','orcamento'));
     }
 
@@ -129,6 +132,7 @@ class CadastroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = $this->objOrcamento->destroy($id);
+        return($delete)?"Sim":"Não";
     }
 }
