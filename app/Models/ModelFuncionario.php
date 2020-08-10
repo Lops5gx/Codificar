@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelFuncionario extends Model
 {
     protected $table = 'Funcionario';
+    protected $fillable =['id', 'name'];
 
     public function _relOrcamento(){
 

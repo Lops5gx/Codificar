@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class ModelOrcamento extends Model
 {
     protected $table ='Orcamento';
+    protected $fillable =['id', 'name', 'id_cliente', 'id_funcionario', 'descricao', 'valor', 'created_at'];
+    
 
     public function _relCliente(){
 
@@ -17,4 +19,6 @@ class ModelOrcamento extends Model
 
         return $this-> hasOne('App\Models\ModelFuncionario', 'id', 'id_funcionario');
     }
+
+
 }

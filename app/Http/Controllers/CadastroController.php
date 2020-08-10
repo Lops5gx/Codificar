@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\OrcamentoRequest;
 use App\Models\ModelCliente;
 use App\Models\ModelFuncionario;
 use App\Models\ModelOrcamento;
@@ -41,7 +41,10 @@ class CadastroController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $cliente=$this->objCliente->all();
+        $funcionario=$this->objFuncionario->all();
+        return view('create', compact('cliente', 'funcionario'));
+        
     }
 
     /**
@@ -50,9 +53,21 @@ class CadastroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrcamentoRequest $request)
     {
-        //
+        $cadastro = $this->objOrcamento->create([
+            'id'=>$request->id,
+            'id_cliente'=>$request->id_cliente,
+            'date'=>$request->created_at,
+            'name'=>$request->name,
+            'id_funcionario'=>$request->id_funcionario,
+            'descricao'=>$request->descricao,
+            'valor'=>$request->valor,
+        ]);
+        if($cadastro)
+            return redirect($to= 'orcamento');
+        
+
     }
 
     /**
@@ -73,8 +88,11 @@ class CadastroController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $orcamento=$this->objOrcamento->find($id);
+        $cliente=$this->objCliente->all();
+        $funcionario=$this->objFuncionario->all();
+        return view('create', compact('orcamento', 'funcionario', 'cliente'));
     }
 
     /**
@@ -84,9 +102,23 @@ class CadastroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrcamentoRequest $request, $id)
     {
-        //
+        $data = $this->objOrcamento->where(['id'=>$id]);
+        
+        //$updated_at = date($request->created_at = 'time(d/m/y H:i:s)');
+
+        $this->objOrcamento->where(['id'=>$id])->update([
+            'id'=>$request->id,
+            'id_cliente'=>$request->id_cliente,
+            'created_at'=>$request->date,
+            'name'=>$request->name,
+            'id_funcionario'=>$request->id_funcionario,
+            'descricao'=>$request->descricao,
+            'valor'=>$request->valor,
+        ]);
+        
+        return redirect('orcamento');
     }
 
     /**

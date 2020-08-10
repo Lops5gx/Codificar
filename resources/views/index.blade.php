@@ -5,7 +5,15 @@
 
     <div class="text-center">
         <a href="{{url('orcamento/create')}}">
-          <button class="btn btn-success mt-4 mb-4">Cadastrar</button>
+          <button class="btn btn-success mt-4 mb-4">Cadastrar Orçamento</button>
+        </a>
+
+        <a href="{{url('/cliente')}}">
+          <button class="btn btn-success mt-4 mb-4">Cadastrar Cliente</button>
+        </a>
+
+        <a href="{{url('/funcionario')}}">
+          <button class="btn btn-success mt-4 mb-4">Cadastrar Funcionário</button>
         </a>
     </div>
 <div class="col-10 m-auto">
@@ -22,28 +30,32 @@
           </tr>
         </thead>
         <tbody> 
-
-            
               @foreach ($orcamento as $key => $orcamentos)
                 @php
                   $nomeCliente = $orcamentos->find($orcamentos->id)->_relCliente;  
                   $nomeFuncionarios = $orcamentos->find($orcamentos->id)->_relFuncionario;
                 @endphp
                 <tr>
+                  {{-- date_format($orcamentos->created_at,"d/m/y H:i:s") --}}
                   <th scope="row">{{$orcamentos->id}}</th>
                   <td>{{$nomeCliente->name}}</td>
-                  <td>{{$orcamentos->created_at}}</td>
+                  <td>{{date_format($orcamentos->created_at,"d/m/y")}}</td>
                   <td>{{$orcamentos->name}}</td>
                   <td>{{$nomeFuncionarios->name}}</td>
                   <td>{{$orcamentos->descricao}}</td>
-                  <td>R$ {{$orcamentos->valor}}</td>
+                  <td>R${{$orcamentos->valor}}</td>
+                  <td>
+                    <a  href="{{url("orcamento/$orcamentos->id/edit")}}"> 
+                      <button class="btn btn-primary ">Editar</button>
+                    </a>
+                  </td>
+                  <td>
+                    <a href=""> 
+                      <button class="btn btn-primary">Remover</button>
+                    </a>
+                  </td>
                 </tr>
-
               @endforeach
-
-
-          
-          
         </tbody>
       </table>
 </div>

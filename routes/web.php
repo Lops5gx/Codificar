@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\CadastroClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+/*ROTA ORCAMENTO */ 
+
 Route::get('/orcamento', 'CadastroController@index');
 Route::resource('/orcamento','CadastroController');
+
+/*Update*/
+// Route::get('editar/{id}/edit', 'CadastroController@edit');
+// Route::put('editar/{id}', 'CadastroController@update');
+
+/*Delete*/
+
+
+/*ROTA CLIENTE*/
+
+/*Create*/
+Route::get('/cliente', 'CadastroClienteController@create');
+Route::post('/cliente', 'CadastroClienteController@store');
+
+
+
+/*ROTA FUNCIONARIO */
+
+/*Create*/
+Route::get('/funcionario', 'CadastroFuncionarioController@create');
+Route::post('/funcionario', 'CadastroFuncionarioController@store');
