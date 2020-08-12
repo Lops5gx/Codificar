@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/orcamento', 'CadastroController@index');
 Route::resource('/orcamento','CadastroController');
 
-/*Update*/
-// Route::get('editar/{id}/edit', 'CadastroController@edit');
-// Route::put('editar/{id}', 'CadastroController@update');
+/* ROTA alternativa para paginação*/
+//Route::get('/orcamento/{id}', 'CadastroController@pagina');
+
 
 /*Delete*/
 

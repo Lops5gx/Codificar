@@ -11,6 +11,21 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
+## About Run the Program 
+
+- Criar no MySQL banco com nome --> codificar <-- e modificar palavra-passe " Ordenação da ligação ao servidor" = utf8mb4_unicode_ci;
+- Configurar variáveis de ambiente padrão e portas de aceeso ao servidor e banco de dados;
+- Colocar o projeto dentro da pasta "www" do, no caso utilizado, o Wamp;
+- No cmd, dentro do projeto, executar o código "php artisan migrate" para criação das tabelas e relações com do banco de dados;
+- Executar também no cmd o código "php artisan db::Seed" para criação de dados prontos
+ 
+ 
+ ## About the Program
+ 
+- CRUD básico utilizando Laravel e como persistência de dados MySQL;
+- Não foi implementado o Requisito Paginação, por complexidade e falta de tempo;
+
+
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
 - Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.

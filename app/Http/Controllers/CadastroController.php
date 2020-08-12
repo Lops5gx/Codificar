@@ -6,7 +6,7 @@ use App\Http\Requests\OrcamentoRequest;
 use App\Models\ModelCliente;
 use App\Models\ModelFuncionario;
 use App\Models\ModelOrcamento;
-use App\Orcamento;
+
 
 class CadastroController extends Controller
 {   
@@ -31,11 +31,18 @@ class CadastroController extends Controller
     {
         $cliente = $this->objCliente->all();
         $funcionario= $this->objFuncionario->all();
-        $orcamento= $this->objOrcamento->all();
-        $orcamento = Orcamento::paginate(2)->sortByDesc('created_at');
-        
+        $orcamento= $this->objOrcamento->all()->sortByDesc('created_at');
         return view('index', compact('cliente','funcionario','orcamento'));
     }
+
+    // public function pagina($num_pagina)
+    // {
+    //     $cliente = $this->objCliente->all();
+    //     $funcionario= $this->objFuncionario->all();
+    //     $orcamento= $this->objOrcamento->paginate($num_pagina)->sortByDesc('created_at');
+        
+    //     return view('index', compact('cliente','funcionario','orcamento'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -69,8 +76,6 @@ class CadastroController extends Controller
         ]);
         if($cadastro)
             return redirect($to= 'orcamento');
-        
-
     }
 
     /**

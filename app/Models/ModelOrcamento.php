@@ -21,4 +21,6 @@ class ModelOrcamento extends Model
 
         return $this-> hasOne('App\Models\ModelFuncionario', 'id', 'id_funcionario');
     }
+
+    
  }

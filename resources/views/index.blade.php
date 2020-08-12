@@ -31,12 +31,13 @@
           </tr>
         </thead>
         <tbody> 
-              @foreach ($orcamento as $key => $orcamentos)
+              @foreach ($orcamento as $orcamentos)
                 @php
                   $nomeCliente = $orcamentos->find($orcamentos->id)->_relCliente;  
                   $nomeFuncionarios = $orcamentos->find($orcamentos->id)->_relFuncionario;
                 @endphp
                 <tr>
+                  
                  
                   <th scope="row">{{$orcamentos->id}}</th>
                   <td>{{$nomeCliente->name}}</td>
@@ -59,7 +60,16 @@
               @endforeach
         </tbody>
       </table>
-      {{!! $orcamento->links() !!}}
+
+      {{-- *** PAGINAÇÃO links() does not exist *** --}}
+      {{-- {{ $orcamentos->links() }}  --}}
+
+
+      {{-- *** Método alternativo para paginação *** --}}
+      {{-- <a href="{{url("orcamento/2")}}" class="js_pagina"> 
+        <button class="btn btn-primary">Próximo</button>
+      </a> --}}
+
       </div>
     
 @endsection
